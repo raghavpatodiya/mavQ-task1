@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  assignment-api-server:
+    image: assignment-api-server-image
+    build:
+      context: ./src
+    ports:
+      - "8080:8080"
+    depends_on:
+      - assignment-database
+
+  assignment-database:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: your_mysql_root_password
+      MYSQL_DATABASE: your_mysql_database_name
+    ports:
+      - "3307:3306"
